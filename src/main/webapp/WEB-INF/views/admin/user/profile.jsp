@@ -46,16 +46,34 @@
                                 <form:input path="userName" id="userName" cssClass="form-control" disabled="true"/>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">
+                                <%--<spring:message code="label.username"/>--%>
+                                    Email
+                            </label>
+                            <div class="col-sm-9">
+                                <form:input path="email" id="email" cssClass="form-control" disabled="true"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right">
+                                <%--<spring:message code="label.username"/>--%>
+                                    Số điện thoại
+                            </label>
+                            <div class="col-sm-9">
+                                <form:input path="phone" id="phone" cssClass="form-control" disabled="true"/>
+                            </div>
+                        </div>
                         <div class="space-4"></div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">
-                                <%--<spring:message code="label.fullname"/>--%>
                                     Tên đầy đủ
                             </label>
                             <div class="col-sm-9">
                                 <form:input path="fullName" id="fullName" cssClass="form-control"/>
                             </div>
                         </div>
+
                         <!--Btn-->
                         <div class="col-sm-12">
                                 <label class="col-sm-3 control-label no-padding-right message-info"></label>

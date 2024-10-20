@@ -5,8 +5,8 @@
 <div class="footer">
     <div class="footer-inner">
         <div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">thenguyen</span>
+						<span class="bigger-160">
+							<span class="blue bolder">TheNguyen!!!!!!</span>
 						</span>
 
             &nbsp; &nbsp;

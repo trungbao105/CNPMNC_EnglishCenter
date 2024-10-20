@@ -10,8 +10,9 @@ public class CourseEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "teacherid")
-    private Long teacherId;
+    @ManyToOne
+    @JoinColumn(name = "teacherid")
+    private TeacherEntity teacherEntity;
 
     @Column(name = "title")
     private String title;
@@ -47,12 +48,12 @@ public class CourseEntity extends BaseEntity {
         this.id = id;
     }
 
-    public Long getTeacherId() {
-        return teacherId;
+    public TeacherEntity getTeacherEntity() {
+        return teacherEntity;
     }
 
-    public void setTeacherId(Long teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacherEntity(TeacherEntity teacherEntity) {
+        this.teacherEntity = teacherEntity;
     }
 
     public String getTitle() {
