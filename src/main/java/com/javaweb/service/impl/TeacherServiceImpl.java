@@ -62,8 +62,9 @@ public class TeacherServiceImpl implements ITeacherService {
         for (TeacherEntity teacherEntity : teacherEntities) {
             teacherEntity.setStatus("0");
             teacherEntities.add(teacherEntity);
+            teacherRepository.saveAll(teacherEntities);
+
         }
-        teacherRepository.saveAll(teacherEntities);
     }
 
 

@@ -26,13 +26,6 @@ public class StudentServiceImpl implements IStudentService {
         return students.stream()
                 .map(studentEntity -> {
                     StudentDTO studentDTO = modelMapper.map(studentEntity, StudentDTO.class);
-                    List<String> courseNames = studentEntity.getCourseEntities().stream()
-                            .map(CourseEntity::getTitle)
-                            .collect(Collectors.toList());
-                    if (courseNames.isEmpty()) {
-                        courseNames.add("Chưa được dạy !!! ");
-                    }
-                    studentDTO.setCourseNames(courseNames);
                     return studentDTO;
                 })
                 .collect(Collectors.toList());
@@ -58,8 +51,9 @@ public class StudentServiceImpl implements IStudentService {
         for (StudentEntity studentEntity : studentEntities) {
             studentEntity.setStatus("0");
             studentEntities.add(studentEntity);
+            studentRepository.saveAll(studentEntities);
+
         }
-        studentRepository.saveAll(studentEntities);
     }
 
 

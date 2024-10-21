@@ -64,11 +64,7 @@
                                 </fieldset>
                             </display:column>
                             <display:column headerClass="text-left" property="name" title="Tên học viên"/>
-                            <display:column headerClass="text-left" title="Tên khóa học">
-                                <c:forEach items="${tableList.courseNames}" var="courseName">
-                                    ${courseName}<br/>
-                                </c:forEach>
-                            </display:column>
+
                             <display:column headerClass="text-left" property="email" title="Email"/>
                             <display:column headerClass="text-left" property="phone" title="Số điện thoại"/>
 
