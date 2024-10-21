@@ -1,6 +1,8 @@
 package com.javaweb.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -16,6 +18,14 @@ public class StudentEntity extends BaseEntity{
     private String phone;
     @Column(name = "status")
     private String status;
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "teacherEntity")
+    List<CourseEntity> courseEntities=new ArrayList<>();
+
+    public List<CourseEntity> getCourseEntities() {
+        return courseEntities;
+    }
+
 
     @Override
     public Long getId() {

@@ -113,6 +113,25 @@
         </li>
     </ul>
 
+    <ul class="nav nav-list">
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-user" aria-hidden="true"></i>
+                <span class="menu-text">Quản lý học viên</span>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li class="">
+                    <a href='/admin/student-list'>
+                        <i class="menu-icon fa fa-user" aria-hidden="true"></i>
+                        Danh sách học viên
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
 <%--    <ul class="nav nav-list">--%>
 <%--        <li class="">--%>
 <%--            <a href="#" class="dropdown-toggle">--%>
