@@ -1,9 +1,18 @@
 package com.javaweb.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Table(name = "course")
 public class CourseEntity extends BaseEntity {
     @Id
@@ -30,61 +39,13 @@ public class CourseEntity extends BaseEntity {
     @Column(name = "note")
     private String note;
 
-    public String getNote() {
-        return note;
-    }
+    @Column(name = "quantity")
+    private Integer quantity;
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+    @OneToMany(mappedBy = "course",  fetch = FetchType.LAZY)
+    private List<ScheduleEntity> schedules = new ArrayList<>();
 
-    @Override
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "course",  fetch = FetchType.LAZY)
+    private List<RegistrationEntity> registrations = new ArrayList<>();
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public TeacherEntity getTeacherEntity() {
-        return teacherEntity;
-    }
-
-    public void setTeacherEntity(TeacherEntity teacherEntity) {
-        this.teacherEntity = teacherEntity;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getOpeningDate() {
-        return openingDate;
-    }
-
-    public void setOpeningDate(Date openingDate) {
-        this.openingDate = openingDate;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }

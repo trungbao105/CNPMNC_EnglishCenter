@@ -10,6 +10,7 @@ public class TeacherDTO extends AbstractDTO{
     private String status;
     private List<String> courseNames;
 
+
     public List<String> getCourseNames() {
         return courseNames;
     }

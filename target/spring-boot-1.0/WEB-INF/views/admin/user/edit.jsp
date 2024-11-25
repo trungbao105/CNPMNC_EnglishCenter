@@ -35,19 +35,22 @@
                     </c:if>
                     <form:form id="formEdit" class="form-horizontal" modelAttribute="model">
                     <div id="profile">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Vai trò</label>
-                            <div class="col-sm-9">
-                                <form:select path="roleCode" id="roleCode">
-                                    <form:option value="" label="--- Chọn vai trò ---"/>
-                                    <form:options items="${model.roleDTOs}"/>
-                                </form:select>
+                        <security:authorize access="hasRole('MANAGER')">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Vai trò</label>
+                                <div class="col-sm-9">
+                                    <form:select path="roleCode" id="roleCode">
+                                        <form:option value="" label="--- Chọn vai trò ---"/>
+                                        <form:options items="${model.roleDTOs}"/>
+                                    </form:select>
+                                </div>
                             </div>
-                        </div>
+                        </security:authorize>
+
                         <div class="space-4"></div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">
-                                 Tên đăng nhập
+                                Tên đăng nhập
                             </label>
                             <div class="col-sm-9">
                                 <c:if test="${not empty model.id}">
@@ -73,8 +76,10 @@
                             <c:if test="${not empty model.id}">
                                 <input type="button" class="btn btn-white btn-warning btn-bold"
                                        value="Cập nhật người dùng" id="btnAddOrUpdateUsers"/>
-                                <input type="button" class="btn btn-white btn-warning btn-bold"
-                                       value="Reset mật khẩu" id="btnResetPassword"/>
+                                <security:authorize access="hasRole('MANAGER')">
+                                    <input type="button" class="btn btn-white btn-warning btn-bold"
+                                           value="Reset mật khẩu" id="btnResetPassword"/>
+                                </security:authorize>
                                 <img src="/img/loading.gif" style="display: none; height: 100px" id="loading_image">
                             </c:if>
                             <c:if test="${empty model.id}">
@@ -108,8 +113,7 @@
             } else {
                 window.location.href = "<c:url value='/admin/user-edit-"+userId+"?message=role_require'/>";
             }
-        }
-        else {
+        } else {
             var userName = dataArray['userName'];
             var roleCode = dataArray['roleCode'];
             if (userName != '' && roleCode != '') {
@@ -162,7 +166,7 @@
 
     function resetPassword(id) {
         $.ajax({
-            url: '${formUrl}/password/'+id+'/reset',
+            url: '${formUrl}/password/' + id + '/reset',
             type: 'PUT',
             dataType: 'json',
             success: function (res) {

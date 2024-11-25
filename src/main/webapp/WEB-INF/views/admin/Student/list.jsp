@@ -64,9 +64,10 @@
                                 </fieldset>
                             </display:column>
                             <display:column headerClass="text-left" property="name" title="Tên học viên"/>
-
                             <display:column headerClass="text-left" property="email" title="Email"/>
                             <display:column headerClass="text-left" property="phone" title="Số điện thoại"/>
+                            <display:column headerClass="text-left" property="createdBy" title="Người thêm"/>
+                            <display:column headerClass="text-left" property="createdDate" title="Ngày thêm"/>
 
                             <display:column title="Thao tác">
                                 <a href="/admin/student-edit-${tableList.id}">
@@ -78,6 +79,11 @@
                                         onclick="deleteStudent(${tableList.id})">
                                     <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                 </button>
+                                <button class="btn btn-xs btn-success"
+                                        onclick="loadRegistrationInfo(${tableList.id})">
+                                    <i class="ace-icon fa fa-eye"></i>
+                                </button>
+
                             </display:column>
                         </display:table>
                         <input type="hidden" name="Course" id="studentId" value="">
@@ -110,8 +116,58 @@
     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
         <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
     </a>
+
+    <div id="infoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teacherModalLabel">Khóa học đã đăng ký</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="assignmentForm">
+                        <div id="registrations">
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
+    function loadRegistrationInfo(id) {
+        fetch(`${studentAPI}/regis-` + id)
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    let registrationsHTML = "";
+                    data.forEach(item => {
+                        registrationsHTML += `
+                        <div class="order-item">
+                            <p><strong>Tên khóa học:</strong> ` + item.courseName + `</p>
+                            <hr>
+                        </div>
+                    `;
+                    });
+                    document.getElementById("registrations").innerHTML = registrationsHTML;
+                    $('#infoModal').modal('show');
+                } else {
+                    document.getElementById("registrations").innerHTML = "<p>Chưa đăng ký khóa học nào.</p>";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("registrations").innerHTML = `<p> Không thể tải khóa học.</p>`;
+            });
+    }
+
     function deleteStudent(id) {
         var studentId = [id];
         deleteStudents(studentId);

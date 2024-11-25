@@ -16,7 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CourseServiceImpl implements ICourseService {
     @Autowired
@@ -40,6 +43,7 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public void addOrUpdateCourse(CourseDTO courseDTO) {
         CourseEntity course = modelMapper.map(courseDTO, CourseEntity.class);
+        course.setQuantity(0);
         courseRepository.save(course);
     }
 
@@ -81,6 +85,14 @@ public class CourseServiceImpl implements ICourseService {
             teacherDTOs.add(teacherDTO);
         }
         return teacherDTOs;
+    }
+
+    @Override
+    public List<CourseDTO> getAllCourses() {
+        List<CourseEntity> courseEntities = courseRepository.findAll();
+        return courseEntities.stream()
+                .map(courseEntity -> modelMapper.map(courseEntity, CourseDTO.class))
+                .collect(Collectors.toList());
     }
 
 

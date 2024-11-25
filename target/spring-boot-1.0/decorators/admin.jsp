@@ -4,13 +4,12 @@
 <html>
 <head>
 	<title><dec:title default="Trang chủ" /></title>
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
@@ -21,15 +20,10 @@
 			href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 			rel="stylesheet">
 
-
-
-
 	<!-- jquery -->
-	<script type='text/javascript' src="js/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 	<%--sweetalert--%>
-	<script type='text/javascript' src="assets/sweetalert2/sweetalert2.min.js"></script>
-	<link rel="stylesheet" href="assets/sweetalert2/sweetalert2.min.css">
 </head>
 <body class="page-top">
 <div id="wrapper">
@@ -63,7 +57,7 @@
 
 	<%--common javascript file--%>
 	<script type="text/javascript" src="js/global_admin_script.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/jquery-ui.custom.min.js"></script>
 	<script src="assets/js/jquery.ui.touch-punch.min.js"></script>

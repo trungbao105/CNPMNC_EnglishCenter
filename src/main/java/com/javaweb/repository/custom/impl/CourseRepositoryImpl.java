@@ -35,9 +35,9 @@ public class CourseRepositoryImpl implements CourseRepositoryCustom {
                     Object value = item.get(courseSearchRequest);
                     if (value != null && value!="") {
                         if (item.getType().getName().equals("java.lang.Long") || item.getType().getName().equals("java.lang.Integer")) {
-                            where.append(" AND b." + fieldName + "=" + value + " ");
+                            where.append(" AND c." + fieldName + "=" + value + " ");
                         } else if (item.getType().getName().equals("java.lang.String")){
-                            where.append(" AND b." + fieldName + " LIKE '%" + value + "%' ");
+                            where.append(" AND c." + fieldName + " LIKE '%" + value + "%' ");
                         }
                     }
                 }

@@ -1,6 +1,7 @@
 package com.javaweb.service;
 
 import com.javaweb.model.dto.CourseDTO;
+import com.javaweb.model.dto.RoomDTO;
 import com.javaweb.model.dto.TeacherDTO;
 import com.javaweb.model.request.CourseSearchRequest;
 import com.javaweb.model.response.CourseSearchResponse;
@@ -16,4 +17,5 @@ public interface ICourseService {
     void deleteCourses (List<Long> Id);
     void assignTeacherToCourse(Long courseId, List<Long> teacherIds);
     List<TeacherDTO> getAssignedTeachers(Long courseId);
+    List<CourseDTO> getAllCourses();
 }

@@ -68,19 +68,19 @@
                                     <form:textarea rows="12" class="form-control" path="note"/>
                                  </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 no-padding-right">Hình ảnh </label>
-                                <input class="col-sm-3 no-padding-right" type="file" id="uploadImage"/>
-                                <div class="col-xs-9">
-                                     <c:if test="${not empty courseEdit.image}">
-                                        <c:set var="imagePath" value="/repository${courseEdit.image}"/>
-                                        <img src="${imagePath}" id="viewImage" width="300px" height="300px" style="margin-top: 50px">
-                                    </c:if>
-                                    <c:if test="${empty courseEdit.image}">
-                                        <img src="/admin/image/defaul.jpg" id="viewImage" width="300px" height="300px">
-                                    </c:if>
-                                </div>
-                            </div>
+<%--                            <div class="form-group">--%>
+<%--                                <label class="col-sm-3 no-padding-right">Hình ảnh </label>--%>
+<%--                                <input class="col-sm-3 no-padding-right" type="file" id="uploadImage"/>--%>
+<%--                                <div class="col-xs-9">--%>
+<%--                                     <c:if test="${not empty courseEdit.image}">--%>
+<%--                                        <c:set var="imagePath" value="/repository${courseEdit.image}"/>--%>
+<%--                                        <img src="${imagePath}" id="viewImage" width="300px" height="300px" style="margin-top: 50px">--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${empty courseEdit.image}">--%>
+<%--                                        <img src="/admin/image/defaul.jpg" id="viewImage" width="300px" height="300px">--%>
+<%--                                    </c:if>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
                             <div class="form-group">
                                 <label class="col-xs-3"></label>

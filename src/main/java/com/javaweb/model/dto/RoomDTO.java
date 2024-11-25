@@ -5,7 +5,6 @@ public class RoomDTO extends AbstractDTO{
     private String roomName;
     private int capacity;
     private String location;
-
     @Override
     public Long getId() {
         return id;

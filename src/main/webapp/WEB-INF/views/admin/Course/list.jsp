@@ -181,11 +181,9 @@
 <script>
     function assignmentCourse(courseId) {
     document.getElementById('assignmentForm').setAttribute('data-course-id', courseId);
-    // Gọi API lấy danh sách giáo viên hiện có
     fetch('/api/teachers')
         .then(response => response.json())
         .then(teachers => {
-            // Gọi API lấy danh sách giáo viên đã được gán cho khóa học
             return fetch(`${courseAPI}/` + courseId + `/assigned-teachers`)
                 .then(response => response.json())
                 .then(assignedTeachers => {
@@ -199,7 +197,6 @@
                         radio.type = 'radio';
                         radio.name = 'teacher';
                         radio.value = teacher.id;
-                        // Kiểm tra nếu giáo viên này đã được gán cho khóa học và đánh dấu
                         if (assignedTeacherIds.includes(teacher.id)) {
                             radio.checked = true;
                         }

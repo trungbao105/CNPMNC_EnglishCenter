@@ -17,31 +17,6 @@ import javax.servlet.http.HttpSession;
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
 
-
-    @GetMapping(value="/gioi-thieu")
-    public ModelAndView introducceBuiding(){
-        ModelAndView mav = new ModelAndView("web/introduce");
-        return mav;
-    }
-
-    @GetMapping(value="/san-pham")
-    public ModelAndView buidingList(){
-        ModelAndView mav = new ModelAndView("/web/list");
-        return mav;
-    }
-
-    @GetMapping(value="/tin-tuc")
-    public ModelAndView news(){
-        ModelAndView mav = new ModelAndView("/web/news");
-        return mav;
-    }
-
-    @GetMapping(value="/lien-he")
-    public ModelAndView contact(){
-        ModelAndView mav = new ModelAndView("/web/contact");
-        return mav;
-    }
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView mav = new ModelAndView("login");

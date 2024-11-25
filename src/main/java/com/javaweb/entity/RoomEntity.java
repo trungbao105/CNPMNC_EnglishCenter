@@ -1,6 +1,8 @@
 package com.javaweb.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -14,6 +16,16 @@ public class RoomEntity extends BaseEntity{
     private int capacity;
     @Column(name = "location")
     private String location;
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
+    private List<ScheduleEntity> schedules = new ArrayList<>();
+
+    public List<ScheduleEntity> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<ScheduleEntity> schedules) {
+        this.schedules = schedules;
+    }
 
     @Override
     public Long getId() {

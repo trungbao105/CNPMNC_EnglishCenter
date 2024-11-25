@@ -1,16 +1,14 @@
 package com.javaweb.service.impl;
 
-import com.javaweb.entity.CourseEntity;
 import com.javaweb.entity.StudentEntity;
-import com.javaweb.entity.TeacherEntity;
 import com.javaweb.model.dto.StudentDTO;
-import com.javaweb.model.dto.TeacherDTO;
 import com.javaweb.repository.StudentRepository;
 import com.javaweb.service.IStudentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +18,7 @@ public class StudentServiceImpl implements IStudentService {
     private StudentRepository studentRepository;
     @Autowired
     private ModelMapper modelMapper;
+
     @Override
     public List<StudentDTO> getAllStudents() {
         List<StudentEntity> students = studentRepository.findStudentEntitiesByStatus("1");
@@ -52,9 +51,6 @@ public class StudentServiceImpl implements IStudentService {
             studentEntity.setStatus("0");
             studentEntities.add(studentEntity);
             studentRepository.saveAll(studentEntities);
-
         }
     }
-
-
 }

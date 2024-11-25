@@ -1,10 +1,15 @@
 package com.javaweb.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "student")
 public class StudentEntity extends BaseEntity{
     @Id
@@ -18,54 +23,7 @@ public class StudentEntity extends BaseEntity{
     private String phone;
     @Column(name = "status")
     private String status;
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    private List<RegistrationEntity> registrations = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "teacherEntity")
-    List<CourseEntity> courseEntities=new ArrayList<>();
-
-    public List<CourseEntity> getCourseEntities() {
-        return courseEntities;
-    }
-
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

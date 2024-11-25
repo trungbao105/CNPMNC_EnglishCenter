@@ -64,7 +64,7 @@
                                 </fieldset>
                             </display:column>
                             <display:column headerClass="text-left" property="name" title="Tên giáo viên"/>
-                            <display:column headerClass="text-left" title="Tên khóa học">
+                            <display:column headerClass="text-left" title="Khóa học đảm nhiệm ">
                                 <c:forEach items="${tableList.courseNames}" var="courseName">
                                     ${courseName}<br/>
                                 </c:forEach>
